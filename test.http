@@ -1,0 +1,136 @@
+### Welcome
+GET http://localhost:3000/
+
+###
+
+### Get All Products
+GET http://localhost:3000/api/products
+
+###
+
+### Get Single Product
+GET http://localhost:3000/api/products/1
+
+###
+
+### Get Product - Not Found (404)
+GET http://localhost:3000/api/products/999
+
+###
+
+### Get Products by Category
+GET http://localhost:3000/api/products/category/electronics
+
+###
+
+### Category - Not Found (404)
+GET http://localhost:3000/api/products/category/furniture
+
+###
+
+### Add New Product (201 Created)
+POST http://localhost:3000/api/products
+Content-Type: application/json
+
+{
+  "name": "Bluetooth Speaker",
+  "category": "electronics",
+  "price": 1499,
+  "stock": 30,
+  "description": "Portable speaker with 12-hour battery life"
+}
+
+###
+
+### Add Duplicate Product (400)
+POST http://localhost:3000/api/products
+Content-Type: application/json
+
+{
+  "name": "Bluetooth Speaker",
+  "category": "electronics",
+  "price": 1499,
+  "stock": 30
+}
+
+###
+
+### Validation Error - Bad Data (400)
+POST http://localhost:3000/api/products
+Content-Type: application/json
+
+{
+  "name": "",
+  "price": -100
+}
+
+###
+
+### Add Item to Cart
+POST http://localhost:3000/api/cart/add
+Content-Type: application/json
+
+{
+  "userId": "user123",
+  "productId": 1,
+  "quantity": 2
+}
+
+###
+
+### Add Another Item to Cart
+POST http://localhost:3000/api/cart/add
+Content-Type: application/json
+
+{
+  "userId": "user123",
+  "productId": 4,
+  "quantity": 3
+}
+
+###
+
+### Add Item - Not Enough Stock (400)
+POST http://localhost:3000/api/cart/add
+Content-Type: application/json
+
+{
+  "userId": "user123",
+  "productId": 3,
+  "quantity": 100
+}
+
+###
+
+### View Cart
+GET http://localhost:3000/api/cart/user123
+
+###
+
+### View Empty Cart
+GET http://localhost:3000/api/cart/newuser
+
+###
+
+### Checkout (201 Created)
+POST http://localhost:3000/api/cart/checkout
+Content-Type: application/json
+
+{
+  "userId": "user123"
+}
+
+###
+
+### Checkout Empty Cart - Error (400)
+POST http://localhost:3000/api/cart/checkout
+Content-Type: application/json
+
+{
+  "userId": "user123"
+}
+
+###
+
+### Unknown Route - 404
+GET http://localhost:3000/api/unknown
