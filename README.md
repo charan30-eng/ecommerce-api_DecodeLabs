@@ -189,8 +189,3 @@ This project includes a `test.http` file for testing all endpoints directly insi
 
 Open `test.http` and click **Send Request** above any endpoint.
 
----
-
-## License
-
-This project is licensed under the MIT License.
